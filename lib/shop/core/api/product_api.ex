@@ -28,7 +28,14 @@ defmodule Shop.Core.Api.ProductApi do
   end
 
   def insert(params) do
-    struct(Product, params)
+    %Product{}
+    |> Product.changeset(params)
     |> Repo.insert()
+  end
+
+  def update(model, params) do
+    model
+    |> Product.changeset(params)
+    |> Repo.update()
   end
 end

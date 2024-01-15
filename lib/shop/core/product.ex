@@ -10,4 +10,10 @@ defmodule Shop.Core.Product do
 
     timestamps()
   end
+
+  def changeset(model, params) do
+    model
+    |> Ecto.Changeset.cast(params, [:title, :description, :price])
+    |> Ecto.Changeset.validate_required([:title, :description])
+  end
 end
