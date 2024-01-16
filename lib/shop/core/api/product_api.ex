@@ -12,6 +12,10 @@ defmodule Shop.Core.Product.Api do
 
   def get(id) do
     Repo.get(Product, id)
+    |> case do
+      nil -> {:error, "Product not found"}
+      product -> {:ok, product}
+    end
   end
 
   def get_by(where) do
