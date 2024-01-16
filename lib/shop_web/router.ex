@@ -8,7 +8,10 @@ defmodule ShopWeb.Router do
   scope "/api", ShopWeb do
     pipe_through :api
 
-    get "/products", ProductsController, :index
+    scope "/products" do
+      get "/", ProductsController, :index
+      get "/:id", ProductsController, :show
+    end
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

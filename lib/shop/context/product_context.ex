@@ -9,4 +9,14 @@ defmodule Shop.ProductContext do
       error -> error
     end
   end
+
+  def show(params) do
+    with {:ok, id} <- Shop.Validate.get_required(params, "id"),
+         {:ok, _id} <- Shop.Validate.is_integer(id, "id"),
+         {:ok, product} <- Product.Api.get(id) do
+      {:ok, Product.Api.json!(product, :public)}
+    else
+      {:error, msg} -> {:error, msg}
+    end
+  end
 end
