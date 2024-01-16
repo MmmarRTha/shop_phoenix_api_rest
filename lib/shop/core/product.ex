@@ -11,6 +11,8 @@ defmodule Shop.Core.Product do
     timestamps()
   end
 
+  def permission(:public), do: [:id, :title, :description, :price, :inserted_at, :updated_at]
+
   def changeset(model, params) do
     model
     |> Ecto.Changeset.cast(params, [:title, :description, :price])

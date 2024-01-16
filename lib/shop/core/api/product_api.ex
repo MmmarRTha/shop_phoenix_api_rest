@@ -1,4 +1,4 @@
-defmodule Shop.Core.Api.ProductApi do
+defmodule Shop.Core.Product.Api do
   @moduledoc false
   alias Shop.Repo
   alias Shop.Core.Product
@@ -7,7 +7,7 @@ defmodule Shop.Core.Api.ProductApi do
 
   ## all, get, get_by, insert, update, delete
   def all do
-    Repo.all(Product)
+    {:ok, Repo.all(Product)}
   end
 
   def get(id) do
@@ -37,5 +37,9 @@ defmodule Shop.Core.Api.ProductApi do
     model
     |> Product.changeset(params)
     |> Repo.update()
+  end
+
+  def json!(model, permission) do
+    Map.take(model, Product.permission(permission))
   end
 end
