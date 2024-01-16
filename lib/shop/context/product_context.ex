@@ -1,9 +1,12 @@
 defmodule Shop.ProductContext do
-    @moduledoc false
+  @moduledoc false
 
-    alias Shop.Core.Api.ProductApi
+  alias Shop.Core.Product
 
-    def all(_params) do
-        ProductApi.all()
+  def all(_params) do
+    case Product.Api.all() do
+      {:ok, products} -> {:ok, products |> Enum.map(&Product.Api.json!(&1, :public))}
+      error -> error
     end
+  end
 end

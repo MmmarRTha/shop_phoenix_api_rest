@@ -1,8 +1,17 @@
 defmodule ShopWeb.ProductsController do
-    @moduledoc false
+  @moduledoc false
   use ShopWeb, :controller
 
-  def index(conn, _params) do
-    json(conn, %{status: :ok})
+  alias Shop.ProductContext
+
+  def index(conn, params) do
+    case ProductContext.all(params) do
+      {:ok, products} ->
+        json(conn, %{data: products})
+
+      {:error, msg} ->
+        put_status(conn, 422)
+        |> json(%{error: msg})
+    end
   end
 end
