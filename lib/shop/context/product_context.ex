@@ -27,6 +27,21 @@ defmodule Shop.ProductContext do
     end
   end
 
+  def update(params) do
+    with {:ok, id} <- Shop.Validate.get_required(params, "id"),
+         {:ok, _id} <- Shop.Validate.is_integer(id, "id"),
+         {:ok, product} <- Product.Api.get(id),
+         {:ok, updated_product} <- Product.Api.update(product, params) do
+      {:ok, updated_product |> Product.Api.json!(:public)}
+    else
+      {:error, %Ecto.Changeset{} = changeset} ->
+        {:error, parse_errors(changeset)}
+
+      {:error, msg} ->
+        {:error, msg}
+    end
+  end
+
   defp parse_errors(changeset) do
     Enum.map(changeset.errors, fn
       {key, {message, _}} -> "#{key}: #{message}"

@@ -36,4 +36,15 @@ defmodule ShopWeb.ProductsController do
         |> json(%{error: msg})
     end
   end
+
+    def update(conn, params) do
+        case ProductContext.update(params) do
+        {:ok, product} ->
+            json(conn, %{data: product})
+
+        {:error, msg} ->
+            put_status(conn, 422)
+            |> json(%{error: msg})
+        end
+    end
 end
