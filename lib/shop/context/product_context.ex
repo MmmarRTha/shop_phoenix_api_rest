@@ -23,7 +23,7 @@ defmodule Shop.ProductContext do
   def create(params) do
     case Product.Api.insert(params) do
       {:ok, product} -> {:ok, Product.Api.json!(product, :public)}
-      {:error, changeset} -> {:error, parse_errors(changeset)}
+      {:error, %Ecto.Changeset{} = changeset} -> {:error, parse_errors(changeset)}
     end
   end
 
