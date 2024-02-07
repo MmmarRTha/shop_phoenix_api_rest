@@ -25,4 +25,15 @@ defmodule ShopWeb.ProductsController do
         |> json(%{error: msg})
     end
   end
+
+  def create(conn, params) do
+    case ProductContext.create(params) do
+      {:ok, product} ->
+        json(conn, %{data: product})
+
+      {:error, msg} ->
+        put_status(conn, 422)
+        |> json(%{error: msg})
+    end
+  end
 end

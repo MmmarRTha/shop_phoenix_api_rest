@@ -11,7 +11,7 @@ defmodule Shop.Validate do
   def is_integer(value, field) do
     case Integer.parse(value) do
       {int, ""} -> {:ok, int}
-      _ -> {:error, "#{field}: Field is not an integer"}
+      _ -> {:error, "#{field}: Value is not an integer"}
     end
   end
 end

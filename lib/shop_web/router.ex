@@ -11,6 +11,7 @@ defmodule ShopWeb.Router do
     scope "/products" do
       get "/", ProductsController, :index
       get "/:id", ProductsController, :show
+      post "/", ProductsController, :create
     end
   end
 

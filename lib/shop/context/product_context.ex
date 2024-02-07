@@ -19,4 +19,17 @@ defmodule Shop.ProductContext do
       {:error, msg} -> {:error, msg}
     end
   end
+
+  def create(params) do
+    case Product.Api.insert(params) do
+      {:ok, product} -> {:ok, Product.Api.json!(product, :public)}
+      {:error, changeset} -> {:error, parse_errors(changeset)}
+    end
+  end
+
+  defp parse_errors(changeset) do
+    Enum.map(changeset.errors, fn
+      {key, {message, _}} -> "#{key}: #{message}"
+    end)
+  end
 end
