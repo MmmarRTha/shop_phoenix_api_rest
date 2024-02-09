@@ -47,4 +47,15 @@ defmodule ShopWeb.ProductsController do
             |> json(%{error: msg})
         end
     end
+
+    def delete(conn, params) do
+        case ProductContext.delete(params) do
+        {:ok, product} ->
+            json(conn, %{data: product})
+
+        {:error, msg} ->
+            put_status(conn, 422)
+            |> json(%{error: msg})
+        end
+    end
 end

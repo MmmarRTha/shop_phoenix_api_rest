@@ -42,6 +42,16 @@ defmodule Shop.ProductContext do
     end
   end
 
+  def delete(params) do
+    with {:ok, id} <- Shop.Validate.get_required(params, "id"),
+         {:ok, _id} <- Shop.Validate.is_integer(id, "id"),
+         {:ok, product} <- Product.Api.delete(id) do
+      {:ok, product |> Product.Api.json!(:public)}
+    else
+      {:error, msg} -> {:error, msg}
+    end
+  end
+
   defp parse_errors(changeset) do
     Enum.map(changeset.errors, fn
       {key, {message, _}} -> "#{key}: #{message}"
