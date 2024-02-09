@@ -13,6 +13,7 @@ defmodule ShopWeb.Router do
       get "/:id", ProductsController, :show
       post "/", ProductsController, :create
       put "/:id", ProductsController, :update
+      delete "/:id", ProductsController, :delete
     end
   end
 

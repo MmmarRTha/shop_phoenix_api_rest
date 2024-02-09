@@ -26,8 +26,8 @@ defmodule Shop.Core.Product.Api do
 
   def delete(id) do
     case get(id) do
-      nil -> {:error, "Product not found"}
-      product -> Repo.delete(product)
+      {:ok, product} -> Repo.delete(product)
+      :error -> {:error, "Product not found"}
     end
   end
 
