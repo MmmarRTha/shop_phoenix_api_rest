@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :shop, Shop.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "backend_elixir",
+  password: "postgres_p0p",
   hostname: "localhost",
-  database: "shop_dc_dev",
+  database: "api_expenses_db",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

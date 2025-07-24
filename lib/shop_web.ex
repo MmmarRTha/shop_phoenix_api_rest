@@ -42,7 +42,7 @@ defmodule ShopWeb do
         layouts: [html: ShopWeb.Layouts]
 
       import Plug.Conn
-      import ShopWeb.Gettext
+      use Gettext, backend: ShopWeb.Gettext
 
       unquote(verified_routes())
     end
