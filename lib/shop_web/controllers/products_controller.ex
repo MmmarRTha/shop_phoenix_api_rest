@@ -37,25 +37,25 @@ defmodule ShopWeb.ProductsController do
     end
   end
 
-    def update(conn, params) do
-        case ProductContext.update(params) do
-        {:ok, product} ->
-            json(conn, %{data: product})
+  def update(conn, params) do
+    case ProductContext.update(params) do
+      {:ok, product} ->
+        json(conn, %{data: product})
 
-        {:error, msg} ->
-            put_status(conn, 422)
-            |> json(%{error: msg})
-        end
+      {:error, msg} ->
+        put_status(conn, 422)
+        |> json(%{error: msg})
     end
+  end
 
-    def delete(conn, params) do
-        case ProductContext.delete(params) do
-        {:ok, product} ->
-            json(conn, %{data: product})
+  def delete(conn, params) do
+    case ProductContext.delete(params) do
+      {:ok, product} ->
+        json(conn, %{data: product})
 
-        {:error, msg} ->
-            put_status(conn, 422)
-            |> json(%{error: msg})
-        end
+      {:error, msg} ->
+        put_status(conn, 422)
+        |> json(%{error: msg})
     end
+  end
 end

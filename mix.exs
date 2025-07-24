@@ -4,8 +4,8 @@ defmodule Shop.MixProject do
   def project do
     [
       app: :shop,
-      version: "0.1.0",
-      elixir: "~> 1.14",
+      version: "0.1.2",
+      elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -32,21 +32,21 @@ defmodule Shop.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.10"},
-      {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.10"},
-      {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_dashboard, "~> 0.8.2"},
-      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
-      {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
-      {:swoosh, "~> 1.3"},
-      {:finch, "~> 0.13"},
+      {:phoenix, "~> 1.7.21"},
+      {:phoenix_ecto, "~> 4.6"},
+      {:ecto_sql, "~> 3.13"},
+      {:postgrex, ">= 0.20.0"},
+      {:phoenix_live_dashboard, "~> 0.8.7"},
+      {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.2.4", runtime: Mix.env() == :dev},
+      {:swoosh, "~> 1.19"},
+      {:finch, "~> 0.20"},
       {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.20"},
-      {:jason, "~> 1.2"},
-      {:dns_cluster, "~> 0.1.1"},
-      {:plug_cowboy, "~> 2.5"}
+      {:telemetry_poller, "~> 1.3"},
+      {:gettext, "~> 0.26"},
+      {:jason, "~> 1.4"},
+      {:dns_cluster, "~> 0.1.3"},
+      {:plug_cowboy, "~> 2.7"}
     ]
   end
 

@@ -19,32 +19,32 @@ defmodule Shop.Validate do
     end
   end
 
-@doc """
-    Validates if a given value is an integer.
+  @doc """
+  Validates if a given value is an integer.
 
-    ## Examples
+  ## Examples
 
-            iex> Shop.Validate.is_integer("123", :age)
-            {:ok, 123}
+          iex> Shop.Validate.is_integer("123", :age)
+          {:ok, 123}
 
-            iex> Shop.Validate.is_integer("abc", :age)
-            {:error, "age: Value is not an integer"}
+          iex> Shop.Validate.is_integer("abc", :age)
+          {:error, "age: Value is not an integer"}
 
-    ## Parameters
+  ## Parameters
 
-        * `value` - The value to be validated.
-        * `field` - The name of the field being validated.
+      * `value` - The value to be validated.
+      * `field` - The name of the field being validated.
 
-    ## Returns
+  ## Returns
 
-        * `{:ok, int}` - If the value is a valid integer.
-        * `{:error, message}` - If the value is not an integer.
+      * `{:ok, int}` - If the value is a valid integer.
+      * `{:error, message}` - If the value is not an integer.
 
-    """
-    def is_integer(value, field) do
-        case Integer.parse(value) do
-            {int, ""} -> {:ok, int}
-            _ -> {:error, "#{field}: Value is not an integer"}
-        end
+  """
+  def is_integer(value, field) do
+    case Integer.parse(value) do
+      {int, ""} -> {:ok, int}
+      _ -> {:error, "#{field}: Value is not an integer"}
     end
+  end
 end
