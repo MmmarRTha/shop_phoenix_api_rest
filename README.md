@@ -31,7 +31,7 @@ The project exposes the following endpoints:
 
 The product attributes are:
 
-- `name` - The name of the product (required, string)
+- `title` - The name of the product (required, string)
 - `description` - The description of the product (optional, string)
 - `price` - The price of the product in cents (required, integer)
 - `stock` - The number of units available in stock (required, integer)
